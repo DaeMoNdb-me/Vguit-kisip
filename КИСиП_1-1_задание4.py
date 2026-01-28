@@ -1,0 +1,69 @@
+# ядро
+def is_magic_square(matrix):
+    n = len(matrix)
+    
+    # Вычисляем сумму первой строки (эталон)
+    target_sum = sum(matrix[0])
+    
+    # Проверяем суммы всех строк
+    for i in range(n):
+        row_sum = sum(matrix[i])
+        if row_sum != target_sum:
+            return False, f"Сумма строки {i} ({row_sum}) не равна эталонной ({target_sum})"
+    
+    # Проверяем суммы всех столбцов
+    for j in range(n):
+        col_sum = sum(matrix[i][j] for i in range(n))
+        if col_sum != target_sum:
+            return False, f"Сумма столбца {j} ({col_sum}) не равна эталонной ({target_sum})"
+    
+    # Если все проверки прошли
+    return True, f"Матрица является магическим квадратом"
+
+
+# тут был запрос руками, а теперь из файла
+def read_matrix_from_file(filename):
+    matrix = []
+    with open(filename, 'r', encoding='utf-8') as file:
+        for line in file:
+            line = line.strip()
+            if line:  # пропускаем пустые строки
+                row = list(map(int, line.split()))
+                matrix.append(row)
+    return matrix
+
+# 
+try:
+    # Читаем матрицу из файла
+    matrix = read_matrix_from_file("ФИО_группа_vvod.txt")
+    
+    # Проверяем, что матрица не пустая
+    if not matrix:
+        raise ValueError("Файл не содержит данных")
+    
+    # Проверяем, что все строки одинаковой длины
+    n = len(matrix)
+    for row in matrix:
+        if len(row) != n:
+            raise ValueError(f"Матрица не является квадратной: ожидалось {n} столбцов, найдено {len(row)}")
+    
+    is_magic, message = is_magic_square(matrix)
+    
+    # Выводим результат в файл
+    with open("ФИО_группа_vivod.txt", "w", encoding='utf-8') as f:
+        f.write(message)
+    
+    print("Результат записан в файл ФИО_группа_vivod.txt")
+    
+except FileNotFoundError:
+    print("Ошибка: файл ФИО_группа_vvod.txt не найден!")
+except ValueError as e:
+    print(f"Ошибка данных: {e}")
+    # Записываем ошибку в выходной файл
+    with open("ФИО_группа_vivod.txt", "w", encoding='utf-8') as f:
+        f.write(f"Ошибка: {e}")
+except Exception as e:
+    print(f"Произошла ошибка: {e}")
+    # Записываем общую ошибку в выходной файл
+    with open("ФИО_группа_vivod.txt", "w", encoding='utf-8') as f:
+        f.write(f"Ошибка: {e}")
