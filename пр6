@@ -1,0 +1,12 @@
+n=int(input('Insert massive count'))
+a=[]
+
+for i in range (n):
+    print ('Insert ', i,' element massive')
+    a.append(int(input()))
+
+max=max(a)
+print('Max element:', max)
+
+a.reverse()
+print('reversed:', a.reverse)
