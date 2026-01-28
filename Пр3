@@ -1,0 +1,9 @@
+x=input('Insert A')
+y=input('Insert B')
+
+if x>y:
+    z=x
+else:
+    z=y
+    
+print('max', z)
