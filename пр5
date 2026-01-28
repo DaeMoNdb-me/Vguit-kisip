@@ -1,0 +1,9 @@
+text = input("Введите текст на русском языке: ") 
+words = text.split()
+count = 0
+
+for word in words:
+    if word.lower().startswith('е'):
+        count += 1
+
+print(f"count word whitch start with 'e': {count}")
