@@ -1,9 +1,31 @@
-x=input('Insert A')
-y=input('Insert B')
+x1=input('Insert A')
+y1=input('Insert B')
 
-if x>y:
-    z=x
+if x1>y1:
+    z1=x1
 else:
-    z=y
+    z1=y1
     
-print('max', z)
+print('max', z1)
+
+x2=input('Insert A')
+
+if x2/2=0:
+    print(A, 'четное')
+else:
+    print(A, 'нечетное')
+    
+number = int(input("Введите число: "))
+
+even_digits = []
+odd_digits = []
+
+for digit in digits:
+    digit = int(digit)
+    if digit % 2 == 0:
+        even_digits.append(digit)
+    else:
+        odd_digits.append(digit)
+
+print("Четные цифры:", even_digits)
+print("Нечетные цифры:", odd_digits)
